@@ -985,8 +985,25 @@
     .hero { grid-template-columns: 1fr; min-height: auto; gap: 32px; }
     .hero-diag { display: none; }
     .hero-form-wrap { max-width: 100%; width: 100%; }
-    .nav-links { display: none; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: var(--white);
+      flex-direction: column;
+      padding: 16px 24px 20px;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      gap: 4px;
+      z-index: 199;
+    }
+    .nav-links.nav-open { display: flex; }
+    .nav-links a { padding: 10px 0; font-size: .9rem; border-bottom: 1px solid var(--gray-light); }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-cta { margin-top: 8px; text-align: center; border-radius: 6px !important; padding: 12px !important; }
     .nav-menu-btn { display: flex; }
+    nav { position: sticky; }
   }
 
   /* ── MOBILE ── */
@@ -1552,6 +1569,17 @@
 </footer>
 
 <script>
+  // Menu hambúrguer mobile
+  const menuBtn = document.querySelector('.nav-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('nav-open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('nav-open'));
+  });
+
   // Tabs de preço
   document.querySelectorAll('.price-tab').forEach(tab => {
     tab.addEventListener('click', () => {
