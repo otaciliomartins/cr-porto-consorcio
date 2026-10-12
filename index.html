@@ -980,24 +980,68 @@
     .why-grid { grid-template-columns: 1fr 1fr; }
     .comp-wrap { grid-template-columns: 1fr; }
   }
+
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero { grid-template-columns: 1fr; min-height: auto; gap: 32px; }
     .hero-diag { display: none; }
-    .hero-form-wrap { max-width: 480px; }
+    .hero-form-wrap { max-width: 100%; width: 100%; }
     .nav-links { display: none; }
     .nav-menu-btn { display: flex; }
   }
+
+  /* ── MOBILE ── */
   @media (max-width: 600px) {
-    .vant-grid { grid-template-columns: 1fr; }
-    .price-grid { grid-template-columns: 1fr 1fr; }
-    .steps { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
+    nav {
+      height: 68px;
+      padding: 0 16px;
+    }
+    .nav-logo-name { font-size: 1.15rem; }
+
+    .hero {
+      padding: 36px 16px 40px;
+      gap: 28px;
+    }
+    .hero h1 { font-size: 2rem; }
+    .hero-sub { font-size: .9rem; }
+    .hero-tags { gap: 6px; }
+    .hero-tag { font-size: .68rem; padding: 4px 10px; }
+
+    .form-card { padding: 24px 16px 20px; }
+    .form-card-top { padding: 14px 16px; }
     .form-row { grid-template-columns: 1fr; }
-    .trust-inner { gap: 12px; }
-    .trust-divider { display: none; }
-  }
-  @media (max-width: 400px) {
+
+    section { padding: 40px 16px; }
+
+    .vant-grid { grid-template-columns: 1fr; }
     .price-grid { grid-template-columns: 1fr; }
+    .price-tabs { flex-wrap: wrap; width: 100%; }
+    .price-tab { flex: 1; text-align: center; font-size: .78rem; padding: 8px 10px; }
+
+    .steps { grid-template-columns: 1fr; gap: 28px; }
+    .step { flex-direction: row; text-align: left; gap: 16px; align-items: flex-start; }
+    .step-num { width: 44px; height: 44px; font-size: .95rem; flex-shrink: 0; margin-bottom: 0; }
+
+    .why-grid { grid-template-columns: 1fr; }
+    .comp-wrap { grid-template-columns: 1fr; }
+    .comp-card { padding: 24px 18px; }
+    .comp-saving { padding: 20px 18px; flex-direction: column; gap: 16px; }
+
+    .cta-section { padding: 48px 16px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+    .contact-row { flex-direction: column; gap: 12px; align-items: center; }
+
+    footer { padding: 36px 16px 24px; }
+    .footer-inner { flex-direction: column; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 4px; }
+
+    h2 { font-size: 1.5rem; }
+    .section-header { margin-bottom: 28px; }
+  }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.7rem; }
+    .price-tab { font-size: .72rem; padding: 7px 6px; }
   }
 </style>
 
