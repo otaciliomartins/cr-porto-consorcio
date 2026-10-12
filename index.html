@@ -1,0 +1,1554 @@
+782245<title>CR Porto Consórcio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+  /* === Layout: landing de consórcio, full-bleed sections, max 1160px inner === */
+  :root {
+    --navy:        #071E70;
+    --navy-mid:    #092EA6;
+    --blue:        #189ab4;
+    --blue-vivid:  #1A56F5;
+    --blue-light:  #D4DCFB;
+    --blue-faint:  #EEF1FD;
+    --off-white:   #EBF3FC;
+    --gray-light:  #E6E9EF;
+    --gray-mid:    #8A97AC;
+    --graphite:    #0B1626;
+    --fg:          #0B1626;
+    --fg-muted:    #556070;
+    --border:      #CDD3E0;
+    --white:       #FFFFFF;
+    --bg:          #EBF3FC;
+
+    --font-display: 'Libre Baskerville', Georgia, serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+
+    color-scheme: light;
+  }
+
+  /* Design deliberadamente monocromático claro — não varia no dark */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── SVG LOGO MARK ── */
+  .logo-svg { display: block; flex-shrink: 0; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 200;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(16px, 5vw, 64px);
+    height: 100px;
+    gap: 24px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px rgba(9,46,166,.06);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background .18s !important;
+  }
+  .nav-cta:hover { background: var(--blue) !important; }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .nav-menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #B2DCE4;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(52px, 7vw, 88px) clamp(16px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 56px;
+    align-items: center;
+    min-height: 560px;
+  }
+
+  /* diagonais decorativas — o elemento gráfico da identidade visual */
+  .hero-diag {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-diag::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: -40px;
+    width: 320px;
+    height: 130%;
+    background: var(--blue);
+    transform: skewX(-9deg);
+    opacity: .18;
+  }
+  .hero-diag::after {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: 100px;
+    width: 110px;
+    height: 130%;
+    background: var(--blue-vivid);
+    transform: skewX(-9deg);
+    opacity: .12;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(7,30,112,.15);
+  }
+  .hero-brand-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.025em;
+    line-height: 1.05;
+  }
+  .hero-brand-tag {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    margin-top: 6px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 2px;
+    background: var(--navy);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--navy);
+    text-wrap: balance;
+    margin-bottom: 22px;
+    letter-spacing: -.025em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #0A1E60;
+  }
+
+  .hero-sub {
+    font-size: .97rem;
+    color: var(--fg-muted);
+    max-width: 480px;
+    line-height: 1.78;
+    margin-bottom: 32px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(7,30,112,.08);
+    border: 1px solid rgba(7,30,112,.14);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: .72rem;
+    font-weight: 500;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .hero-tag-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--blue-vivid);
+    flex-shrink: 0;
+  }
+
+  /* ── FORM CARD ── */
+  .hero-form-wrap { position: relative; z-index: 2; }
+  .form-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 34px 30px 28px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.32), 0 4px 12px rgba(0,0,0,.12);
+  }
+  .form-card-top {
+    background: var(--navy-mid);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .form-card-top-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .form-card-top-sub {
+    font-size: .72rem;
+    color: rgba(255,255,255,.5);
+    font-weight: 500;
+    letter-spacing: .03em;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .form-group label {
+    font-size: .67rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group select {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 13px;
+    font-family: var(--font-body);
+    font-size: .88rem;
+    color: var(--fg);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color .18s, background .18s;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--blue);
+    background: var(--white);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: .92rem;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background .18s, transform .14s;
+    letter-spacing: .01em;
+  }
+  .btn-submit:hover { background: var(--blue); transform: translateY(-1px); }
+
+  .form-privacy {
+    text-align: center;
+    font-size: .65rem;
+    color: var(--fg-muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    background: var(--graphite);
+    padding: 20px clamp(16px, 5vw, 64px);
+  }
+  .trust-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+  }
+  .trust-num {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue-vivid);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .trust-label {
+    font-size: .65rem;
+    color: rgba(255,255,255,.4);
+    font-weight: 500;
+    letter-spacing: .03em;
+  }
+  .trust-divider {
+    width: 1px; height: 36px;
+    background: rgba(255,255,255,.1);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: clamp(56px, 8vw, 96px) clamp(16px, 5vw, 64px); }
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+  .section-alt { background: var(--gray-light); }
+  .section-header { margin-bottom: 48px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .eyebrow { justify-content: center; }
+  .section-header.center h2 { margin-inline: auto; }
+  .section-header.center .section-lead { margin-inline: auto; }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 22px; height: 2px;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--fg);
+    margin-bottom: 14px;
+    letter-spacing: -.02em;
+  }
+
+  .section-lead {
+    font-size: .96rem;
+    color: var(--fg-muted);
+    max-width: 560px;
+    line-height: 1.78;
+  }
+
+  /* ── VANTAGENS ── */
+  .vant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .vant-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .vant-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s;
+  }
+  .vant-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(9,46,166,.1); }
+  .vant-card:hover::after { transform: scaleX(1); }
+  .vant-icon {
+    width: 48px; height: 48px;
+    background: var(--blue-faint);
+    border-radius: 12px;
+    border: 1px solid var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+  }
+  .vant-card h3 {
+    font-family: var(--font-display);
+    font-size: .96rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+  .vant-card p { font-size: .82rem; color: var(--fg-muted); line-height: 1.7; flex: 1; }
+  .vant-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    margin-top: 6px;
+    transition: gap .18s;
+    letter-spacing: .01em;
+  }
+  .vant-link:hover { gap: 9px; }
+
+  /* ── TABELAS DE PREÇO ── */
+  .price-tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--gray-light);
+    padding: 4px;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+  }
+  .price-tab {
+    padding: 9px 24px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    background: transparent;
+    transition: all .18s;
+  }
+  .price-tab.active {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .price-panel { display: none; }
+  .price-panel.active { display: block; }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .price-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 20px 22px;
+    text-align: center;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(9,46,166,.12);
+    border-color: var(--blue);
+  }
+  .price-card.popular { border-color: var(--blue); }
+  .price-card.popular::before {
+    content: 'MAIS PROCURADO';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: var(--blue);
+    color: var(--white);
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 5px;
+    text-align: center;
+  }
+  .price-card.popular { padding-top: 36px; }
+
+  .price-label {
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 10px;
+  }
+  .price-credit {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-from { font-size: .72rem; color: var(--fg-muted); line-height: 1.4; margin-bottom: 4px; }
+  .price-installment {
+    font-variant-numeric: tabular-nums;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .price-installment-label { font-size: .68rem; color: var(--fg-muted); margin-bottom: 4px; }
+  .price-tag {
+    display: inline-block;
+    background: var(--blue-faint);
+    color: var(--blue);
+    border: 1px solid var(--blue-light);
+    font-size: .68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .price-cta {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--blue-faint);
+    color: var(--blue);
+    font-size: .78rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--blue-light);
+    transition: background .18s, color .18s;
+    margin-top: auto;
+  }
+  .price-cta:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .price-card.popular .price-cta {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .price-card.popular .price-cta:hover { background: var(--blue); border-color: var(--blue); }
+  .price-note {
+    font-size: .72rem;
+    color: var(--fg-muted);
+    margin-top: 24px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* ── COMO FUNCIONA ── */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 4px solid var(--bg);
+    box-shadow: 0 0 0 1.5px var(--navy);
+    flex-shrink: 0;
+  }
+  .step h4 {
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 8px;
+    text-wrap: balance;
+  }
+  .step p { font-size: .8rem; color: var(--fg-muted); line-height: 1.65; }
+
+  /* ── COMPARATIVO ── */
+  .comp-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .comp-card {
+    border-radius: 16px;
+    padding: 34px 30px;
+    border: 1px solid var(--border);
+  }
+  .comp-card.comp-bad { background: var(--white); }
+  .comp-card.comp-good {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+  .comp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .comp-title {
+    font-family: var(--font-display);
+    font-size: .96rem;
+    font-weight: 700;
+  }
+  .comp-bad .comp-title { color: var(--fg); }
+  .comp-good .comp-title { color: var(--white); }
+  .comp-badge {
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .comp-bad .comp-badge { background: #FEE2E2; color: #DC2626; }
+  .comp-good .comp-badge { background: rgba(18,68,212,.3); color: var(--blue-light); }
+  .comp-rows { display: flex; flex-direction: column; gap: 0; }
+  .comp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px solid;
+  }
+  .comp-bad .comp-row { border-color: var(--border); }
+  .comp-good .comp-row { border-color: rgba(255,255,255,.1); }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row-label { font-size: .83rem; }
+  .comp-bad .comp-row-label { color: var(--fg-muted); }
+  .comp-good .comp-row-label { color: rgba(255,255,255,.5); }
+  .comp-row-val {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .comp-bad .comp-row-val { color: #DC2626; }
+  .comp-good .comp-row-val { color: #22C55E; }
+  .comp-row-val.val-neutral { color: var(--blue-light); }
+
+  .comp-saving {
+    grid-column: 1 / -1;
+    background: linear-gradient(130deg, var(--navy) 0%, var(--blue) 100%);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+  .comp-saving::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -40px;
+    width: 160px; height: 160%;
+    background: rgba(255,255,255,.05);
+    transform: skewX(-9deg);
+  }
+  .saving-body { position: relative; z-index: 1; }
+  .saving-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    text-wrap: balance;
+    margin-bottom: 4px;
+  }
+  .saving-title em { font-style: normal; color: #6EE7B7; }
+  .saving-sub { font-size: .77rem; color: rgba(255,255,255,.5); }
+  .saving-cta {
+    background: var(--white);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: .84rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity .18s;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .saving-cta:hover { opacity: .88; }
+
+  /* ── POR QUÊ CR ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .why-card:hover { box-shadow: 0 10px 32px rgba(9,46,166,.08); transform: translateY(-2px); }
+  .why-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px;
+    width: 36px; height: 3px;
+    background: var(--blue);
+  }
+  .why-card h4 {
+    font-family: var(--font-display);
+    font-size: .94rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .why-card p { font-size: .82rem; color: var(--fg-muted); line-height: 1.7; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: #B2DCE4;
+    padding: clamp(64px, 8vw, 100px) clamp(16px, 5vw, 64px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: -60px;
+    width: 240px; height: 140%;
+    background: var(--blue);
+    transform: skewX(-9deg);
+    opacity: .14;
+    pointer-events: none;
+  }
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    top: -20%; right: -60px;
+    width: 180px; height: 140%;
+    background: var(--blue);
+    transform: skewX(-9deg);
+    opacity: .1;
+    pointer-events: none;
+  }
+  .cta-section .section-inner { position: relative; z-index: 1; }
+  .cta-section .eyebrow { color: var(--navy-mid); justify-content: center; }
+  .cta-section .eyebrow::before { background: var(--navy-mid); }
+  .cta-section h2 { color: var(--navy); margin-inline: auto; max-width: 640px; }
+  .cta-lead {
+    font-size: 1rem;
+    color: var(--fg-muted);
+    max-width: 480px;
+    margin: 16px auto 38px;
+    line-height: 1.78;
+  }
+  .cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 38px;
+  }
+  .btn-primary {
+    background: var(--blue-vivid);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: .9rem;
+    padding: 15px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform .15s, box-shadow .15s;
+    letter-spacing: .01em;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(18,68,212,.45); }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: .9rem;
+    padding: 14px 30px;
+    border-radius: 8px;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color .18s, background .18s;
+  }
+  .btn-outline:hover { background: rgba(7,30,112,.08); }
+
+  .contact-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fg-muted);
+    font-size: .83rem;
+  }
+  .contact-item strong { color: var(--navy); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--white);
+    padding: 48px clamp(16px, 5vw, 64px) 28px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .f-logo-name { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+  .f-logo-tag { font-size: .58rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-top: 2px; }
+  .footer-brand p { font-size: .74rem; color: var(--fg-muted); margin-top: 14px; max-width: 230px; line-height: 1.7; }
+  .footer-col h5 { font-size: .6rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col li { font-size: .79rem; color: var(--fg-muted); }
+  .footer-bottom {
+    max-width: 1160px; margin: 0 auto;
+    font-size: .68rem;
+    color: var(--gray-mid);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── FORM SUCCESS ── */
+  .form-success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .form-success h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; }
+  .form-success p { font-size: .8rem; color: var(--fg-muted); line-height: 1.6; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1000px) {
+    .vant-grid { grid-template-columns: 1fr 1fr; }
+    .price-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .steps::before { display: none; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .comp-wrap { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-diag { display: none; }
+    .hero-form-wrap { max-width: 480px; }
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .vant-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .trust-inner { gap: 12px; }
+    .trust-divider { display: none; }
+  }
+  @media (max-width: 400px) {
+    .price-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <svg class="logo-svg" width="30" height="34" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+      <path d="M2 26L12 4H18L8 26H2Z" fill="#071E70"/>
+      <path d="M10 26L20 4H26L16 26H10Z" fill="#1A56F5" opacity="0.85"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">CR Porto Consórcio</span>
+      <span class="nav-logo-tag">Estratégia para grandes aquisições</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#vantagens">Vantagens</a></li>
+    <li><a href="#planos">Planos e valores</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#simulacao" class="nav-cta">Simular agora</a></li>
+  </ul>
+  <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-diag" aria-hidden="true"></div>
+
+  <div class="hero-text" style="text-align:center;">
+    <h1>Mais que consórcio.<br><em>Patrimônio</em> com planejamento.</h1>
+    <p class="hero-sub" style="margin-inline:auto;">A CR Porto Consórcio conecta você ao plano certo para conquistar imóvel, automóvel ou serviço — sem juros, sem surpresas, com acompanhamento do início ao fim.</p>
+    <div class="hero-tags" style="justify-content:center;">
+      <span class="hero-tag"><span class="hero-tag-dot"></span>0% de juros</span>
+      <span class="hero-tag"><span class="hero-tag-dot"></span>Parcelas previsíveis</span>
+      <span class="hero-tag"><span class="hero-tag-dot"></span>Lance estratégico</span>
+      <span class="hero-tag"><span class="hero-tag-dot"></span>Todo o Brasil</span>
+      <span class="hero-tag"><span class="hero-tag-dot"></span>Regulado pelo Banco Central</span>
+    </div>
+  </div>
+
+  <div class="hero-form-wrap" id="simulacao">
+    <div class="form-card">
+      <div class="form-card-top">
+        <div class="form-card-top-title">Faça sua simulação agora</div>
+      </div>
+      <div id="form-body">
+        <div class="form-group">
+          <label for="f-nome">Seu nome</label>
+          <input type="text" id="f-nome" placeholder="Nome completo">
+        </div>
+        <div class="form-group">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-tel">Celular</label>
+            <input type="tel" id="f-tel" placeholder="(11) 9 0000-0000">
+          </div>
+          <div class="form-group">
+            <label for="f-tipo">Modalidade</label>
+            <select id="f-tipo">
+              <option value="">Selecione</option>
+              <option>Imóvel</option>
+              <option>Automóvel</option>
+              <option>Pesados</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-valor">Valor do crédito desejado</label>
+          <select id="f-valor">
+            <option value="">Selecione a faixa</option>
+            <option>Até R$ 50 mil</option>
+            <option>R$ 50 mil – R$ 150 mil</option>
+            <option>R$ 150 mil – R$ 300 mil</option>
+            <option>R$ 300 mil – R$ 500 mil</option>
+            <option>R$ 500 mil – R$ 1 milhão</option>
+            <option>Acima de R$ 1 milhão</option>
+          </select>
+        </div>
+        <button class="btn-submit" id="form-btn">Quero minha simulação →</button>
+        <p class="form-privacy">🔒 Seus dados não são compartilhados com terceiros.</p>
+      </div>
+      <div class="form-success" id="form-success" hidden>
+        <div class="form-success-icon">✅</div>
+        <h4>Simulação solicitada!</h4>
+        <p>Nossa equipe entrará em contato em breve via WhatsApp para montar o plano ideal para você.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- VANTAGENS -->
+<section id="vantagens">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Por que escolher consórcio</div>
+      <h2>Conquiste seu bem com estratégia</h2>
+      <p class="section-lead">Planejamento inteligente em vez de juros compostos. Veja por que o consórcio é a decisão financeira mais eficiente para grandes aquisições.</p>
+    </div>
+    <div class="vant-grid">
+      <div class="vant-card">
+        <div class="vant-icon">💰</div>
+        <h3>Parcelas sem juros</h3>
+        <p>Você paga apenas a taxa de administração — sem juros compostos que corroem o seu orçamento ao longo dos anos.</p>
+        <a href="#simulacao" class="vant-link">Simular agora →</a>
+      </div>
+      <div class="vant-card">
+        <div class="vant-icon">📅</div>
+        <h3>Contemplação todo mês</h3>
+        <p>Sorteios e lances mensais dão a você a chance de ser contemplado antes mesmo de concluir todas as parcelas.</p>
+        <a href="#simulacao" class="vant-link">Simular agora →</a>
+      </div>
+      <div class="vant-card">
+        <div class="vant-icon">🏷️</div>
+        <h3>Compra à vista com a carta</h3>
+        <p>Ao receber a carta de crédito, você negocia como comprador à vista — com poder real de desconto e barganha.</p>
+        <a href="#simulacao" class="vant-link">Simular agora →</a>
+      </div>
+      <div class="vant-card">
+        <div class="vant-icon">🎯</div>
+        <h3>Lance estratégico</h3>
+        <p>Nossa equipe ajuda você a planejar um lance competitivo para antecipar sua contemplação com inteligência.</p>
+        <a href="#simulacao" class="vant-link">Simular agora →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS E VALORES -->
+<section class="section-alt" id="planos">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Planos disponíveis</div>
+      <h2>Escolha o crédito ideal para você</h2>
+      <p class="section-lead">Valores reais de crédito com parcelas a partir de hoje. Simule gratuitamente e descubra o plano que cabe no seu orçamento.</p>
+    </div>
+
+    <div class="price-tabs">
+      <button class="price-tab active" data-panel="imovel">🏠 Imóvel</button>
+      <button class="price-tab" data-panel="auto">🚗 Automóvel</button>
+      <button class="price-tab" data-panel="pesados">🚛 Pesados</button>
+    </div>
+
+    <div class="price-panel active" id="panel-imovel">
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-label">Crédito imobiliário</div>
+          <div class="price-credit">R$ 150.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 769/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card popular">
+          <div class="price-label">Crédito imobiliário</div>
+          <div class="price-credit">R$ 300.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 1.538/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Crédito imobiliário</div>
+          <div class="price-credit">R$ 500.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 2.562/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Crédito imobiliário</div>
+          <div class="price-credit">R$ 1.000.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 5.125/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+      </div>
+      <p class="price-note">Valores estimados. Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+    </div>
+
+    <div class="price-panel" id="panel-auto">
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-label">Crédito automotivo</div>
+          <div class="price-credit">R$ 50.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 673/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card popular">
+          <div class="price-label">Crédito automotivo</div>
+          <div class="price-credit">R$ 80.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 1.076/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Crédito automotivo</div>
+          <div class="price-credit">R$ 120.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 1.615/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Crédito automotivo</div>
+          <div class="price-credit">R$ 170.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 2.287/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+      </div>
+      <p class="price-note">Valores estimados. Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+    </div>
+
+    <div class="price-panel" id="panel-pesados">
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-label">Consórcio de pesados</div>
+          <div class="price-credit">R$ 180.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 1.836/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card popular">
+          <div class="price-label">Consórcio de pesados</div>
+          <div class="price-credit">R$ 200.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 2.040/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Consórcio de pesados</div>
+          <div class="price-credit">R$ 250.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 2.550/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Consórcio de pesados</div>
+          <div class="price-credit">R$ 360.000</div>
+          <div class="price-from">a partir de</div>
+          <div class="price-installment">R$ 3.670/mês</div>
+          <div class="price-installment-label">parcela inicial estimada</div>
+          <span class="price-tag">Sem juros</span>
+          <a href="#simulacao" class="price-cta">Fazer simulação</a>
+        </div>
+      </div>
+      <p class="price-note">Valores estimados. Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="eyebrow">Passo a passo</div>
+      <h2>Do primeiro contato à carta de crédito</h2>
+      <p class="section-lead">Um processo simples e acompanhado por especialistas em cada etapa.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Simulação gratuita</h4>
+        <p>Nossa equipe entende seu objetivo e simula o plano ideal para o seu orçamento e prazo.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Adesão ao grupo</h4>
+        <p>Você assina digitalmente e passa a participar das assembleias mensais com sorteio e lance.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Contemplação</h4>
+        <p>É sorteado ou oferta um lance estratégico para receber a carta de crédito antecipadamente.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Conquista o bem</h4>
+        <p>Com a carta em mãos, compra como pagamento à vista e negocia desconto real com o vendedor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Consórcio x Financiamento</div>
+      <h2>Quanto você economiza na prática</h2>
+      <p class="section-lead">Para um imóvel de R$ 300 mil, a diferença entre financiar e consorcivar chega a centenas de milhares de reais.</p>
+    </div>
+    <div class="comp-wrap">
+      <div class="comp-card comp-bad">
+        <div class="comp-header">
+          <div class="comp-title">Financiamento bancário</div>
+          <span class="comp-badge">JUROS COMPOSTOS</span>
+        </div>
+        <div class="comp-rows">
+          <div class="comp-row">
+            <span class="comp-row-label">Valor do bem</span>
+            <span class="comp-row-val" style="color:var(--fg)">R$ 300.000</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Entrada exigida (20%)</span>
+            <span class="comp-row-val">R$ 60.000</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Parcela mensal</span>
+            <span class="comp-row-val">~R$ 2.600/mês</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Juros anuais</span>
+            <span class="comp-row-val">~10–12% a.a.</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Total pago ao final</span>
+            <span class="comp-row-val">R$ 558.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card comp-good">
+        <div class="comp-header">
+          <div class="comp-title">Consórcio CR Porto Consórcio</div>
+          <span class="comp-badge">SEM JUROS</span>
+        </div>
+        <div class="comp-rows">
+          <div class="comp-row">
+            <span class="comp-row-label">Crédito da carta</span>
+            <span class="comp-row-val val-neutral">R$ 300.000</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Entrada</span>
+            <span class="comp-row-val">R$ 0</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Parcela mensal</span>
+            <span class="comp-row-val">~R$ 1.440/mês</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Juros</span>
+            <span class="comp-row-val">0%</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Total pago ao final</span>
+            <span class="comp-row-val">~R$ 330.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-saving">
+        <div class="saving-body">
+          <div class="saving-title">Economia com o Consórcio CR Porto Consórcio: <em>R$ 228.000</em></div>
+          <div class="saving-sub">No mesmo bem de R$ 300 mil, comparado ao financiamento bancário tradicional.</div>
+        </div>
+        <a href="#simulacao" class="saving-cta">Quero economizar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÊ CR INVEST -->
+<section>
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Por que CR Porto Consórcio</div>
+      <h2>Atendimento que faz a diferença</h2>
+      <p class="section-lead">Especialistas em consórcio em todo o Brasil. Acompanhamos cada etapa com transparência e estratégia.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h4>Consultoria personalizada</h4>
+        <p>Entendemos seu objetivo antes de indicar qualquer produto. O plano certo é aquele que cabe no seu bolso e no seu prazo.</p>
+      </div>
+      <div class="why-card">
+        <h4>Resposta em até 5 minutos</h4>
+        <p>SLA de atendimento rígido. Nossa equipe qualifica e agenda com agilidade, respeitando o seu tempo.</p>
+      </div>
+      <div class="why-card">
+        <h4>Equipe SDR + Closer dedicada</h4>
+        <p>Profissionais especializados em cada etapa: da qualificação ao fechamento. Você nunca fica sem atendimento.</p>
+      </div>
+      <div class="why-card">
+        <h4>Transparência total</h4>
+        <p>Explicamos todas as taxas, prazos e regras antes da adesão. Sem letras miúdas, sem surpresas depois.</p>
+      </div>
+      <div class="why-card">
+        <h4>Estratégia de lance</h4>
+        <p>Planejamos o lance ideal para maximizar suas chances de contemplação antecipada com menor desembolso.</p>
+      </div>
+      <div class="why-card">
+        <h4>Pós-venda ativo</h4>
+        <p>Nossa relação não termina na assinatura. Acompanhamos até a contemplação e o uso da carta de crédito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VÍDEO -->
+<section id="video">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="eyebrow">Entenda melhor</div>
+      <h2>Veja como o consórcio funciona na prática</h2>
+      <p class="section-lead">Assista ao vídeo e tire suas dúvidas antes de simular.</p>
+    </div>
+    <div style="position:relative;width:100%;max-width:760px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(9,46,166,.18);">
+      <div style="position:relative;padding-bottom:56.25%;height:0;">
+        <iframe
+          src="https://www.youtube.com/embed/bbi2IXC5sCY?si=CmDMiLGTVv5XjA2P&start=2"
+          title="CR Porto Consórcio — Como funciona"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="section-inner">
+    <div class="eyebrow">Fale com um especialista</div>
+    <h2>Pronto para começar sua conquista?</h2>
+    <p class="cta-lead">Simulação gratuita, sem compromisso. Nossa equipe monta o plano ideal para o seu objetivo em até 5 minutos.</p>
+    <div class="cta-btns">
+      <a href="mailto:contato@crportoconsorcios.com.br" class="btn-primary">Enviar e-mail</a>
+    </div>
+    <div class="contact-row">
+      <div class="contact-item">📱 <strong>+55 12 99102-3302</strong></div>
+      <div class="contact-item">📧 <strong>contato@crportoconsorcios.com.br</strong></div>
+      <div class="contact-item">📍 <strong>Brasil</strong> — Atendimento nacional</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="22" height="26" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+          <path d="M2 26L12 4H18L8 26H2Z" fill="#071E70"/>
+          <path d="M10 26L20 4H26L16 26H10Z" fill="#1A56F5" opacity="0.85"/>
+        </svg>
+        <div>
+          <div class="f-logo-name">CR Porto Consórcio</div>
+          <div class="f-logo-tag">Estratégia para grandes aquisições</div>
+        </div>
+      </div>
+      <p>Rua Dr. Pompilio Mercadante, 398<br>Atendimento em todo o Brasil</p>
+    </div>
+    <div class="footer-col">
+      <h5>Modalidades</h5>
+      <ul>
+        <li>Consórcio de Imóvel</li>
+        <li>Consórcio de Automóvel</li>
+        <li>Consórcio de Pesados</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Atendimento</h5>
+      <ul>
+        <li>+55 12 99102-3302</li>
+        <li>contato@crportoconsorcios.com.br</li>
+        <li>Seg–Sex · 9h às 18h</li>
+        <li>todo o Brasil</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Sobre</h5>
+      <ul>
+        <li>CR Porto Consórcio</li>
+        <li>Regulado pelo Banco Central</li>
+        <li>Simulação gratuita</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CR Porto Consórcio e Investimentos. Todos os direitos reservados.</span>
+    <span>Brasil</span>
+  </div>
+</footer>
+
+<script>
+  // Tabs de preço
+  document.querySelectorAll('.price-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.getElementById('panel-' + tab.dataset.panel);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Form submit — webhook
+  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/awmxuaIHJ5GG80bBEr5W/webhook-trigger/04c3d786-4f09-486a-9b73-3b94ff06f558';
+
+  document.getElementById('form-btn').addEventListener('click', async () => {
+    const nome  = document.getElementById('f-nome').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const tel   = document.getElementById('f-tel').value.trim();
+    const tipo  = document.getElementById('f-tipo').value;
+    const valor = document.getElementById('f-valor').value;
+
+    document.getElementById('f-nome').style.borderColor  = nome  ? '' : '#DC2626';
+    document.getElementById('f-tel').style.borderColor   = tel   ? '' : '#DC2626';
+    document.getElementById('f-tipo').style.borderColor  = tipo  ? '' : '#DC2626';
+    if (!nome || !tel || !tipo) return;
+
+    const btn = document.getElementById('form-btn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    const payload = { nome, email, telefone: tel, modalidade: tipo, credito_desejado: valor, origem: 'site_cr_porto' };
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (_) { /* envia estado de sucesso mesmo se o webhook falhar */ }
+
+    document.getElementById('form-body').hidden = true;
+    document.getElementById('form-success').hidden = false;
+  });
+</script>
