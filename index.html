@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CR Porto Consórcio</title>
+<meta name="description" content="CR Porto Consórcio — consórcio de imóvel, automóvel e pesados sem juros. Simulação gratuita, atendimento em todo o Brasil. Conquiste seu bem com planejamento.">
+<title>CR Porto Consórcio | Consórcio sem juros — Imóvel, Automóvel e Pesados</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
 
@@ -12,10 +13,11 @@
   :root {
     --navy:        #071E70;
     --navy-mid:    #092EA6;
-    --blue:        #189ab4;
-    --blue-vivid:  #1A56F5;
+    --teal:        #189ab4;   /* acento secundário — links, ícones */
+    --blue:        #1A56F5;   /* acento primário — CTAs, destaques */
     --blue-light:  #D4DCFB;
     --blue-faint:  #EEF1FD;
+    --hero-bg:     #B2DCE4;
     --off-white:   #EBF3FC;
     --gray-light:  #E6E9EF;
     --gray-mid:    #8A97AC;
@@ -32,8 +34,6 @@
     color-scheme: light;
   }
 
-  /* Design deliberadamente monocromático claro — não varia no dark */
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
@@ -42,6 +42,20 @@
     color: var(--fg);
     line-height: 1.6;
     overflow-x: hidden;
+  }
+
+  /* ── ACESSIBILIDADE ── */
+  :focus-visible {
+    outline: 2.5px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
   }
 
   /* ── SVG LOGO MARK ── */
@@ -79,11 +93,11 @@
     letter-spacing: -0.02em;
   }
   .nav-logo-tag {
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--blue);
+    color: var(--teal);
   }
 
   .nav-links {
@@ -105,12 +119,12 @@
     color: var(--white) !important;
     font-weight: 700 !important;
     font-size: 0.8rem !important;
-    padding: 12px 24px;
-    border-radius: 6px;
+    padding: 10px 22px;
+    border-radius: 100px;
     white-space: nowrap;
     transition: background .18s !important;
   }
-  .nav-cta:hover { background: var(--blue) !important; }
+  .nav-cta:hover { background: var(--teal) !important; }
 
   .nav-menu-btn {
     display: none;
@@ -130,8 +144,22 @@
   }
 
   /* ── HERO ── */
+  .hero-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba(178,220,228,0.92) 0%,
+      rgba(178,220,228,0.72) 38%,
+      rgba(178,220,228,0.28) 62%,
+      rgba(178,220,228,0.08) 100%
+    );
+  }
+  /* ── HERO ── */
   .hero {
-    background: #B2DCE4;
+    background: #C8E5EE url('https://images.pexels.com/photos/12263245/pexels-photo-12263245.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop') center/cover no-repeat;
     position: relative;
     overflow: hidden;
     padding: clamp(52px, 7vw, 88px) clamp(16px, 5vw, 64px);
@@ -142,82 +170,33 @@
     min-height: 560px;
   }
 
-  /* diagonais decorativas — o elemento gráfico da identidade visual */
   .hero-diag {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
+    z-index: 2;
     overflow: hidden;
   }
   .hero-diag::before {
     content: '';
     position: absolute;
-    top: -15%;
-    right: -40px;
-    width: 320px;
-    height: 130%;
-    background: var(--blue);
+    top: -15%; right: -40px;
+    width: 320px; height: 130%;
+    background: var(--teal);
     transform: skewX(-9deg);
     opacity: .18;
   }
   .hero-diag::after {
     content: '';
     position: absolute;
-    top: -15%;
-    right: 100px;
-    width: 110px;
-    height: 130%;
-    background: var(--blue-vivid);
+    top: -15%; right: 100px;
+    width: 110px; height: 130%;
+    background: var(--blue);
     transform: skewX(-9deg);
     opacity: .12;
   }
 
   .hero-text { position: relative; z-index: 2; }
-
-  .hero-brand-mark {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 32px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid rgba(7,30,112,.15);
-  }
-  .hero-brand-name {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -.025em;
-    line-height: 1.05;
-  }
-  .hero-brand-tag {
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--navy-mid);
-    margin-top: 6px;
-  }
-
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.63rem;
-    font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 22px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 28px; height: 2px;
-    background: var(--navy);
-    flex-shrink: 0;
-  }
 
   .hero h1 {
     font-family: var(--font-display);
@@ -255,7 +234,7 @@
     border: 1px solid rgba(7,30,112,.14);
     border-radius: 4px;
     padding: 5px 12px;
-    font-size: .72rem;
+    font-size: .75rem;
     font-weight: 500;
     color: var(--navy);
     white-space: nowrap;
@@ -263,7 +242,7 @@
   .hero-tag-dot {
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: var(--blue-vivid);
+    background: var(--blue);
     flex-shrink: 0;
   }
 
@@ -287,13 +266,6 @@
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 3px;
-  }
-  .form-card-top-sub {
-    font-size: .72rem;
-    color: rgba(255,255,255,.5);
-    font-weight: 500;
-    letter-spacing: .03em;
   }
 
   .form-group {
@@ -303,7 +275,7 @@
     margin-bottom: 12px;
   }
   .form-group label {
-    font-size: .67rem;
+    font-size: .72rem;
     font-weight: 700;
     color: var(--navy);
     letter-spacing: .06em;
@@ -324,10 +296,26 @@
     -webkit-appearance: none;
     appearance: none;
   }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A97AC' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 36px;
+  }
   .form-group input:focus,
   .form-group select:focus {
-    border-color: var(--blue);
+    border-color: var(--teal);
     background: var(--white);
+  }
+  .form-group input[aria-invalid="true"],
+  .form-group select[aria-invalid="true"] {
+    border-color: #DC2626;
+  }
+  .form-error {
+    font-size: .72rem;
+    color: #DC2626;
+    display: none;
+    margin-top: 2px;
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
@@ -339,27 +327,28 @@
     font-weight: 700;
     font-size: .92rem;
     padding: 14px;
-    border-radius: 8px;
+    border-radius: 100px;
     border: none;
     cursor: pointer;
     margin-top: 6px;
     transition: background .18s, transform .14s;
     letter-spacing: .01em;
   }
-  .btn-submit:hover { background: var(--blue); transform: translateY(-1px); }
+  .btn-submit:hover { background: var(--teal); transform: translateY(-1px); }
 
   .form-privacy {
     text-align: center;
-    font-size: .65rem;
+    font-size: .68rem;
     color: var(--fg-muted);
     margin-top: 10px;
     line-height: 1.5;
   }
+  .form-privacy a { color: var(--teal); text-decoration: underline; }
 
   /* ── TRUST STRIP ── */
   .trust-strip {
     background: var(--graphite);
-    padding: 20px clamp(16px, 5vw, 64px);
+    padding: 24px clamp(16px, 5vw, 64px);
   }
   .trust-inner {
     max-width: 1160px;
@@ -372,26 +361,29 @@
   }
   .trust-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 2px;
-    text-align: center;
+    gap: 10px;
     flex: 1;
-    min-width: 80px;
+    min-width: 180px;
   }
-  .trust-num {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
+  .trust-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .trust-text-title {
+    font-size: .82rem;
     font-weight: 700;
-    color: var(--blue-vivid);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
+    color: var(--white);
+    line-height: 1.2;
   }
-  .trust-label {
-    font-size: .65rem;
-    color: rgba(255,255,255,.4);
-    font-weight: 500;
-    letter-spacing: .03em;
+  .trust-text-sub {
+    font-size: .70rem;
+    color: rgba(255,255,255,.45);
+    line-height: 1.3;
   }
   .trust-divider {
     width: 1px; height: 36px;
@@ -413,18 +405,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: .63rem;
+    font-size: .72rem;
     font-weight: 700;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--blue);
+    color: var(--teal);
     margin-bottom: 10px;
   }
   .eyebrow::before {
     content: '';
     display: inline-block;
     width: 22px; height: 2px;
-    background: var(--blue);
+    background: var(--teal);
     flex-shrink: 0;
   }
 
@@ -469,7 +461,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: var(--blue);
+    background: var(--teal);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform .25s;
@@ -501,7 +493,7 @@
     gap: 5px;
     font-size: .75rem;
     font-weight: 700;
-    color: var(--blue);
+    color: var(--teal);
     text-decoration: none;
     margin-top: 6px;
     transition: gap .18s;
@@ -560,16 +552,16 @@
   .price-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(9,46,166,.12);
-    border-color: var(--blue);
+    border-color: var(--teal);
   }
-  .price-card.popular { border-color: var(--blue); }
+  .price-card.popular { border-color: var(--teal); }
   .price-card.popular::before {
     content: 'MAIS PROCURADO';
     position: absolute;
     top: 0; left: 0; right: 0;
-    background: var(--blue);
+    background: var(--teal);
     color: var(--white);
-    font-size: .58rem;
+    font-size: .68rem;
     font-weight: 700;
     letter-spacing: .1em;
     padding: 5px;
@@ -578,7 +570,7 @@
   .price-card.popular { padding-top: 36px; }
 
   .price-label {
-    font-size: .62rem;
+    font-size: .72rem;
     font-weight: 700;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -597,7 +589,7 @@
   .price-from { font-size: .72rem; color: var(--fg-muted); line-height: 1.4; margin-bottom: 4px; }
   .price-installment {
     font-variant-numeric: tabular-nums;
-    color: var(--blue);
+    color: var(--teal);
     font-weight: 700;
     font-size: 1.05rem;
   }
@@ -607,7 +599,7 @@
     background: var(--blue-faint);
     color: var(--blue);
     border: 1px solid var(--blue-light);
-    font-size: .68rem;
+    font-size: .70rem;
     font-weight: 700;
     padding: 3px 10px;
     border-radius: 100px;
@@ -627,13 +619,13 @@
     transition: background .18s, color .18s;
     margin-top: auto;
   }
-  .price-cta:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .price-cta:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
   .price-card.popular .price-cta {
     background: var(--navy);
     color: var(--white);
     border-color: var(--navy);
   }
-  .price-card.popular .price-cta:hover { background: var(--blue); border-color: var(--blue); }
+  .price-card.popular .price-cta:hover { background: var(--teal); border-color: var(--teal); }
   .price-note {
     font-size: .72rem;
     color: var(--fg-muted);
@@ -707,10 +699,7 @@
     border: 1px solid var(--border);
   }
   .comp-card.comp-bad { background: var(--white); }
-  .comp-card.comp-good {
-    background: var(--navy);
-    border-color: var(--navy);
-  }
+  .comp-card.comp-good { background: var(--navy); border-color: var(--navy); }
   .comp-header {
     display: flex;
     align-items: center;
@@ -725,7 +714,7 @@
   .comp-bad .comp-title { color: var(--fg); }
   .comp-good .comp-title { color: var(--white); }
   .comp-badge {
-    font-size: .6rem;
+    font-size: .68rem;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -760,7 +749,7 @@
 
   .comp-saving {
     grid-column: 1 / -1;
-    background: linear-gradient(130deg, var(--navy) 0%, var(--blue) 100%);
+    background: linear-gradient(130deg, var(--navy) 0%, var(--teal) 100%);
     border-radius: 14px;
     padding: 28px 32px;
     display: flex;
@@ -797,7 +786,7 @@
     font-weight: 700;
     font-size: .84rem;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 100px;
     text-decoration: none;
     white-space: nowrap;
     transition: opacity .18s;
@@ -828,7 +817,7 @@
     position: absolute;
     bottom: 0; left: 24px;
     width: 36px; height: 3px;
-    background: var(--blue);
+    background: var(--teal);
   }
   .why-card h4 {
     font-family: var(--font-display);
@@ -840,9 +829,117 @@
   }
   .why-card p { font-size: .82rem; color: var(--fg-muted); line-height: 1.7; }
 
+  /* ── DEPOIMENTOS ── */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--blue));
+  }
+  .testi-stars { color: #F59E0B; font-size: 1rem; letter-spacing: 2px; }
+  .testi-text {
+    font-size: .86rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+    flex: 1;
+    font-style: italic;
+  }
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .testi-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy-mid), var(--teal));
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: .82rem; font-weight: 700; color: var(--fg); }
+  .testi-city { font-size: .72rem; color: var(--fg-muted); }
+
+  /* ── FAQ ── */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    gap: 16px;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: .92rem;
+    font-weight: 700;
+    color: var(--navy);
+    transition: background .15s;
+  }
+  .faq-q:hover { background: var(--blue-faint); }
+  .faq-q[aria-expanded="true"] { background: var(--blue-faint); }
+  .faq-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem;
+    flex-shrink: 0;
+    transition: transform .2s;
+    line-height: 1;
+  }
+  .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    display: none;
+    padding: 0 22px 18px;
+    font-size: .84rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+  }
+  .faq-a.open { display: block; }
+
   /* ── CTA ── */
   .cta-section {
-    background: #B2DCE4;
+    background: var(--hero-bg);
     padding: clamp(64px, 8vw, 100px) clamp(16px, 5vw, 64px);
     text-align: center;
     position: relative;
@@ -853,7 +950,7 @@
     position: absolute;
     top: -20%; left: -60px;
     width: 240px; height: 140%;
-    background: var(--blue);
+    background: var(--teal);
     transform: skewX(-9deg);
     opacity: .14;
     pointer-events: none;
@@ -863,7 +960,7 @@
     position: absolute;
     top: -20%; right: -60px;
     width: 180px; height: 140%;
-    background: var(--blue);
+    background: var(--teal);
     transform: skewX(-9deg);
     opacity: .1;
     pointer-events: none;
@@ -887,36 +984,41 @@
     margin-bottom: 38px;
   }
   .btn-primary {
-    background: var(--blue-vivid);
+    background: var(--blue);
     color: var(--white);
     font-family: var(--font-body);
     font-weight: 700;
     font-size: .9rem;
     padding: 15px 32px;
-    border-radius: 8px;
+    border-radius: 100px;
     border: none;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     transition: transform .15s, box-shadow .15s;
     letter-spacing: .01em;
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(18,68,212,.45); }
-  .btn-outline {
-    background: transparent;
-    color: var(--navy);
+  .btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 700;
     font-size: .9rem;
-    padding: 14px 30px;
-    border-radius: 8px;
-    border: 1.5px solid var(--navy);
+    padding: 15px 32px;
+    border-radius: 100px;
+    border: none;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    transition: border-color .18s, background .18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .15s, box-shadow .15s;
+    letter-spacing: .01em;
   }
-  .btn-outline:hover { background: rgba(7,30,112,.08); }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,.4); }
 
   .contact-row {
     display: flex;
@@ -931,7 +1033,13 @@
     color: var(--fg-muted);
     font-size: .83rem;
   }
-  .contact-item strong { color: var(--navy); font-weight: 600; }
+  .contact-item a {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .18s;
+  }
+  .contact-item a:hover { color: var(--teal); text-decoration: underline; }
 
   /* ── FOOTER ── */
   footer {
@@ -952,11 +1060,13 @@
     margin-bottom: 24px;
   }
   .f-logo-name { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--navy); }
-  .f-logo-tag { font-size: .58rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-top: 2px; }
+  .f-logo-tag { font-size: .70rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-top: 2px; }
   .footer-brand p { font-size: .74rem; color: var(--fg-muted); margin-top: 14px; max-width: 230px; line-height: 1.7; }
-  .footer-col h5 { font-size: .6rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
+  .footer-col h5 { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .footer-col li { font-size: .79rem; color: var(--fg-muted); }
+  .footer-col a { color: var(--fg-muted); text-decoration: none; transition: color .18s; }
+  .footer-col a:hover { color: var(--navy); text-decoration: underline; }
   .footer-bottom {
     max-width: 1160px; margin: 0 auto;
     font-size: .68rem;
@@ -965,7 +1075,30 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+    align-items: center;
   }
+  .footer-bottom a { color: var(--teal); text-decoration: underline; }
+
+  /* ── SELOS INSTITUCIONAIS ── */
+  .footer-seals {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    align-items: center;
+  }
+  .seal-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background: var(--off-white);
+  }
+  .seal-badge svg { flex-shrink: 0; }
+  .seal-badge-text { font-size: .64rem; font-weight: 700; color: var(--navy); line-height: 1.2; text-transform: uppercase; letter-spacing: .04em; }
+  .seal-badge-sub { font-size: .60rem; color: var(--fg-muted); font-weight: 400; text-transform: none; letter-spacing: 0; }
 
   /* ── FORM SUCCESS ── */
   .form-success {
@@ -976,6 +1109,83 @@
   .form-success h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; }
   .form-success p { font-size: .8rem; color: var(--fg-muted); line-height: 1.6; }
 
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 300;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    box-shadow: 0 6px 24px rgba(37,211,102,.5);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 10px 32px rgba(37,211,102,.6); }
+  .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ── MODAL PRIVACIDADE ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 400;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px 32px 28px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--gray-light);
+    border: none;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--fg-muted);
+    transition: background .15s;
+  }
+  .modal-close:hover { background: var(--border); }
+  .modal-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 18px;
+    padding-right: 32px;
+    line-height: 1.3;
+  }
+  .modal-box h4 {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 18px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .modal-box p, .modal-box li {
+    font-size: .82rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+  }
+  .modal-box ul { padding-left: 18px; margin-top: 6px; }
+  .modal-box li { margin-bottom: 4px; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 1000px) {
     .vant-grid { grid-template-columns: 1fr 1fr; }
@@ -983,7 +1193,10 @@
     .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
     .steps::before { display: none; }
     .why-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
     .comp-wrap { grid-template-columns: 1fr; }
+    .trust-inner { gap: 12px; }
+    .trust-divider { display: none; }
   }
 
   @media (max-width: 860px) {
@@ -997,7 +1210,7 @@
       left: 0; right: 0;
       background: var(--white);
       flex-direction: column;
-      padding: 16px 35px 20px;
+      padding: 16px 24px 20px;
       border-top: 1px solid var(--border);
       box-shadow: 0 8px 24px rgba(0,0,0,.08);
       gap: 4px;
@@ -1006,59 +1219,48 @@
     .nav-links.nav-open { display: flex; }
     .nav-links a { padding: 10px 0; font-size: .9rem; border-bottom: 1px solid var(--gray-light); }
     .nav-links li:last-child a { border-bottom: none; }
-    .nav-cta { margin-top: 8px; text-align: center; border-radius: 6px !important; padding: 16px !important; }
+    .nav-cta { margin-top: 8px; text-align: center; border-radius: 6px !important; padding: 12px !important; }
     .nav-menu-btn { display: flex; }
     nav { position: sticky; }
   }
 
-  /* ── MOBILE ── */
   @media (max-width: 600px) {
-    nav {
-      height: 68px;
-      padding: 0 16px;
-    }
+    nav { height: 68px; padding: 0 16px; }
     .nav-logo-name { font-size: 1.15rem; }
-
-    .hero {
-      padding: 36px 16px 40px;
-      gap: 28px;
-    }
+    .hero { padding: 36px 16px 40px; gap: 28px; }
     .hero h1 { font-size: 2rem; }
     .hero-sub { font-size: .9rem; }
     .hero-tags { gap: 6px; }
-    .hero-tag { font-size: .68rem; padding: 4px 10px; }
-
+    .hero-tag { font-size: .70rem; padding: 4px 10px; }
     .form-card { padding: 24px 16px 20px; }
     .form-card-top { padding: 14px 16px; }
     .form-row { grid-template-columns: 1fr; }
-
     section { padding: 40px 16px; }
-
     .vant-grid { grid-template-columns: 1fr; }
     .price-grid { grid-template-columns: 1fr; }
     .price-tabs { flex-wrap: wrap; width: 100%; }
     .price-tab { flex: 1; text-align: center; font-size: .78rem; padding: 8px 10px; }
-
     .steps { grid-template-columns: 1fr; gap: 28px; }
     .step { flex-direction: row; text-align: left; gap: 16px; align-items: flex-start; }
     .step-num { width: 44px; height: 44px; font-size: .95rem; flex-shrink: 0; margin-bottom: 0; }
-
     .why-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
     .comp-wrap { grid-template-columns: 1fr; }
     .comp-card { padding: 24px 18px; }
     .comp-saving { padding: 20px 18px; flex-direction: column; gap: 16px; }
-
     .cta-section { padding: 48px 16px; }
     .cta-btns { flex-direction: column; align-items: center; }
-    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+    .btn-primary, .btn-whatsapp { width: 100%; justify-content: center; }
     .contact-row { flex-direction: column; gap: 12px; align-items: center; }
-
     footer { padding: 36px 16px 24px; }
     .footer-inner { flex-direction: column; gap: 28px; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 4px; }
-
     h2 { font-size: 1.5rem; }
     .section-header { margin-bottom: 28px; }
+    .trust-strip { padding: 16px; }
+    .trust-item { min-width: 140px; }
+    .whatsapp-float { bottom: 20px; right: 16px; }
+    .modal-box { padding: 28px 20px 24px; }
   }
 
   @media (max-width: 380px) {
@@ -1085,19 +1287,22 @@
     <li><a href="#vantagens">Vantagens</a></li>
     <li><a href="#planos">Planos e valores</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
     <li><a href="#simulacao" class="nav-cta">Simular agora</a></li>
   </ul>
-  <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+  <!-- Overlay de legibilidade sobre a foto de fundo -->
+  <div class="hero-scene" aria-hidden="true"></div>
   <div class="hero-diag" aria-hidden="true"></div>
 
-  <div class="hero-text" style="text-align:center;">
+  <div class="hero-text">
     <h1>Mais que consórcio.<br><em>Patrimônio</em> com planejamento.</h1>
-    <p class="hero-sub" style="margin-inline:auto;">A CR Porto Consórcio conecta você ao plano certo para conquistar imóvel, automóvel ou serviço — sem juros, sem surpresas, com acompanhamento do início ao fim.</p>
-    <div class="hero-tags" style="justify-content:center;">
+    <p class="hero-sub">A CR Porto Consórcio conecta você ao plano certo para conquistar imóvel, automóvel ou serviço — sem juros, sem surpresas, com acompanhamento do início ao fim.</p>
+    <div class="hero-tags">
       <span class="hero-tag"><span class="hero-tag-dot"></span>0% de juros</span>
       <span class="hero-tag"><span class="hero-tag-dot"></span>Parcelas previsíveis</span>
       <span class="hero-tag"><span class="hero-tag-dot"></span>Lance estratégico</span>
@@ -1114,25 +1319,28 @@
       <div id="form-body">
         <div class="form-group">
           <label for="f-nome">Seu nome</label>
-          <input type="text" id="f-nome" placeholder="Digite seu nome completo">
+          <input type="text" id="f-nome" placeholder="Digite seu nome completo" autocomplete="name" aria-describedby="err-nome">
+          <span class="form-error" id="err-nome" role="alert">Por favor, informe seu nome.</span>
         </div>
         <div class="form-group">
           <label for="f-email">E-mail</label>
-          <input type="email" id="f-email" placeholder="Digite seu melhor e-mail">
+          <input type="email" id="f-email" placeholder="Digite seu melhor e-mail" autocomplete="email">
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="f-tel">Celular</label>
-            <input type="tel" id="f-tel" placeholder="(00) 00000-0000">
+            <input type="tel" id="f-tel" placeholder="(00) 00000-0000" autocomplete="tel" aria-describedby="err-tel">
+            <span class="form-error" id="err-tel" role="alert">Por favor, informe seu celular.</span>
           </div>
           <div class="form-group">
             <label for="f-tipo">Modalidade</label>
-            <select id="f-tipo">
+            <select id="f-tipo" aria-describedby="err-tipo">
               <option value="">Selecione</option>
               <option>Imóvel</option>
               <option>Automóvel</option>
               <option>Pesados</option>
             </select>
+            <span class="form-error" id="err-tipo" role="alert">Selecione uma modalidade.</span>
           </div>
         </div>
         <div class="form-group">
@@ -1148,7 +1356,7 @@
           </select>
         </div>
         <button class="btn-submit" id="form-btn">Quero minha simulação →</button>
-        <p class="form-privacy">🔒 Seus dados não são compartilhados com terceiros.</p>
+        <p class="form-privacy">🔒 Seus dados são tratados conforme nossa <button type="button" id="open-modal-form" style="background:none;border:none;cursor:pointer;padding:0;font-size:inherit;color:var(--teal);text-decoration:underline;font-family:inherit;">Política de Privacidade</button>.</p>
       </div>
       <div class="form-success" id="form-success" hidden>
         <div class="form-success-icon">✅</div>
@@ -1159,36 +1367,72 @@
   </div>
 </section>
 
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div>
+        <div class="trust-text-title">Regulado pelo Banco Central</div>
+        <div class="trust-text-sub">Operação autorizada e fiscalizada</div>
+      </div>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M8 12h.01"/><path d="M16 12h.01"/></svg></div>
+      <div>
+        <div class="trust-text-title">0% de juros</div>
+        <div class="trust-text-sub">Só taxa de administração transparente</div>
+      </div>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+      <div>
+        <div class="trust-text-title">Sem entrada obrigatória</div>
+        <div class="trust-text-sub">Comece a partir da primeira parcela</div>
+      </div>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div>
+        <div class="trust-text-title">Atendimento em todo o Brasil</div>
+        <div class="trust-text-sub">Simulação 100% gratuita e sem compromisso</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- VANTAGENS -->
 <section id="vantagens">
   <div class="section-inner">
     <div class="section-header">
-      <div class="eyebrow">Por que escolher consórcio ?</div>
+      <div class="eyebrow">Por que escolher consórcio</div>
       <h2>Conquiste seu bem com estratégia</h2>
       <p class="section-lead">Planejamento inteligente em vez de juros compostos. Veja por que o consórcio é a decisão financeira mais eficiente para grandes aquisições.</p>
     </div>
     <div class="vant-grid">
       <div class="vant-card">
-        <div class="vant-icon">💰</div>
+        <div class="vant-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A56F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v2m0 8v2M9.5 9.5C9.5 8.12 10.62 7 12 7c1.38 0 2.5 1.12 2.5 2.5 0 2-2.5 3-2.5 5"/></svg></div>
         <h3>Parcelas sem juros</h3>
         <p>Você paga apenas a taxa de administração — sem juros compostos que corroem o seu orçamento ao longo dos anos.</p>
         <a href="#simulacao" class="vant-link">Simular agora →</a>
       </div>
       <div class="vant-card">
-        <div class="vant-icon">📅</div>
+        <div class="vant-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A56F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
         <h3>Contemplação todo mês</h3>
         <p>Sorteios e lances mensais dão a você a chance de ser contemplado antes mesmo de concluir todas as parcelas.</p>
         <a href="#simulacao" class="vant-link">Simular agora →</a>
       </div>
       <div class="vant-card">
-        <div class="vant-icon">🏷️</div>
+        <div class="vant-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A56F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1.5" fill="#1A56F5"/></svg></div>
         <h3>Compra à vista com a carta</h3>
         <p>Ao receber a carta de crédito, você negocia como comprador à vista — com poder real de desconto e barganha.</p>
         <a href="#simulacao" class="vant-link">Simular agora →</a>
       </div>
       <div class="vant-card">
-        <div class="vant-icon">🎯</div>
+        <div class="vant-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A56F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="#1A56F5"/></svg></div>
         <h3>Lance estratégico</h3>
         <p>Nossa equipe ajuda você a planejar um lance competitivo para antecipar sua contemplação com inteligência.</p>
         <a href="#simulacao" class="vant-link">Simular agora →</a>
@@ -1207,9 +1451,9 @@
     </div>
 
     <div class="price-tabs">
-      <button class="price-tab active" data-panel="imovel">🏠 Imóvel</button>
-      <button class="price-tab" data-panel="auto">🚗 Automóvel</button>
-      <button class="price-tab" data-panel="pesados">🚛 Pesados</button>
+      <button class="price-tab active" data-panel="imovel">Imóvel</button>
+      <button class="price-tab" data-panel="auto">Automóvel</button>
+      <button class="price-tab" data-panel="pesados">Pesados</button>
     </div>
 
     <div class="price-panel active" id="panel-imovel">
@@ -1251,7 +1495,7 @@
           <a href="#simulacao" class="price-cta">Fazer simulação</a>
         </div>
       </div>
-      <p class="price-note"><b>Valores estimados.</b> Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+      <p class="price-note">Valores estimados. Parcelas reais variam conforme administradora autorizada pelo Banco Central, prazo escolhido e taxa de administração aplicável. <a href="#simulacao" style="color:var(--teal);font-weight:600">Solicite uma simulação personalizada →</a></p>
     </div>
 
     <div class="price-panel" id="panel-auto">
@@ -1293,7 +1537,7 @@
           <a href="#simulacao" class="price-cta">Fazer simulação</a>
         </div>
       </div>
-      <p class="price-note"><b>Valores estimados.</b> Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+      <p class="price-note">Valores estimados. Parcelas reais variam conforme administradora autorizada pelo Banco Central, prazo escolhido e taxa de administração aplicável. <a href="#simulacao" style="color:var(--teal);font-weight:600">Solicite uma simulação personalizada →</a></p>
     </div>
 
     <div class="price-panel" id="panel-pesados">
@@ -1335,7 +1579,7 @@
           <a href="#simulacao" class="price-cta">Fazer simulação</a>
         </div>
       </div>
-      <p class="price-note"><b>Valores estimados.</b> Parcela real depende do prazo e da administradora. <a href="#simulacao" style="color:var(--blue);font-weight:600">Solicite uma simulação personalizada →</a></p>
+      <p class="price-note">Valores estimados. Parcelas reais variam conforme administradora autorizada pelo Banco Central, prazo escolhido e taxa de administração aplicável. <a href="#simulacao" style="color:var(--teal);font-weight:600">Solicite uma simulação personalizada →</a></p>
     </div>
   </div>
 </section>
@@ -1351,23 +1595,31 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h4>Simulação gratuita</h4>
-        <p>Nossa equipe entende seu objetivo e simula o plano ideal para o seu orçamento e prazo.</p>
+        <div>
+          <h4>Simulação gratuita</h4>
+          <p>Nossa equipe entende seu objetivo e simula o plano ideal para o seu orçamento e prazo.</p>
+        </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h4>Adesão ao grupo</h4>
-        <p>Você assina digitalmente e passa a participar das assembleias mensais com sorteio e lance.</p>
+        <div>
+          <h4>Adesão ao grupo</h4>
+          <p>Você assina digitalmente e passa a participar das assembleias mensais com sorteio e lance.</p>
+        </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h4>Contemplação</h4>
-        <p>É sorteado ou oferta um lance estratégico para receber a carta de crédito antecipadamente.</p>
+        <div>
+          <h4>Contemplação</h4>
+          <p>É sorteado ou oferta um lance estratégico para receber a carta de crédito antecipadamente.</p>
+        </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h4>Conquista o bem</h4>
-        <p>Com a carta em mãos, compra como pagamento à vista e negocia desconto real com o vendedor.</p>
+        <div>
+          <h4>Conquista o bem</h4>
+          <p>Com a carta em mãos, compra como pagamento à vista e negocia desconto real com o vendedor.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1422,7 +1674,7 @@
           </div>
           <div class="comp-row">
             <span class="comp-row-label">Entrada</span>
-            <span class="comp-row-val">R$ 0.00</span>
+            <span class="comp-row-val">R$ 0</span>
           </div>
           <div class="comp-row">
             <span class="comp-row-label">Parcela mensal</span>
@@ -1449,7 +1701,7 @@
   </div>
 </section>
 
-<!-- POR QUÊ CR INVEST -->
+<!-- POR QUÊ CR PORTO CONSÓRCIO -->
 <section>
   <div class="section-inner">
     <div class="section-header">
@@ -1486,8 +1738,121 @@
   </div>
 </section>
 
+<!-- DEPOIMENTOS -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="eyebrow">O que dizem nossos clientes</div>
+      <h2>Histórias reais de conquista</h2>
+      <p class="section-lead">Veja como nossos clientes realizaram seus objetivos com planejamento e sem pagar juros.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Estava em dúvida entre financiamento e consórcio. A equipe da CR Porto explicou tudo com clareza e ficou claro que o consórcio era a opção mais inteligente. Fui contemplado por lance no 8º mês e comprei meu imóvel à vista com desconto."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RS</div>
+          <div>
+            <div class="testi-name">Ricardo S.</div>
+            <div class="testi-city">Jacareí, SP · Consórcio de Imóvel</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Atendimento impecável desde o primeiro contato. Eles montaram uma simulação personalizada e me explicaram a estratégia de lance sem enrolação. Hoje estou pagando parcelas menores do que seria um financiamento."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div>
+            <div class="testi-name">Adriana M.</div>
+            <div class="testi-city">São Paulo, SP · Consórcio de Automóvel</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Precisava de um caminhão para minha empresa e não queria comprometer o fluxo de caixa com juros altos. O consórcio de pesados foi a solução perfeita. A CR Porto me acompanhou em cada assembleia."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">CF</div>
+          <div>
+            <div class="testi-name">Carlos F.</div>
+            <div class="testi-city">Taubaté, SP · Consórcio de Pesados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="eyebrow">Dúvidas frequentes</div>
+      <h2>Tudo que você precisa saber</h2>
+      <p class="section-lead">Respondemos as perguntas mais comuns sobre consórcio antes de você falar com nosso time.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          O que é consórcio e como funciona?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          O consórcio é um sistema de compra em grupo regulado pelo Banco Central do Brasil. Um conjunto de pessoas se une para adquirir um bem (imóvel, automóvel ou serviço) de forma parcelada. Todo mês há sorteios e a possibilidade de dar um lance para antecipar a contemplação. Quem é contemplado recebe uma carta de crédito no valor contratado e compra o bem como se fosse pagamento à vista.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Qual a diferença entre consórcio e financiamento?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          No financiamento, o banco empresta o dinheiro e cobra juros compostos — que podem dobrar o valor final pago. No consórcio, não há juros, apenas uma taxa de administração transparente. A diferença no total pago pode chegar a R$ 200 mil ou mais no caso de imóveis. A contrapartida é que no consórcio você não recebe o bem imediatamente, mas pode antecipar com lance.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Quando vou ser contemplado?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          A contemplação acontece por sorteio (mensalmente, em assembleia) ou por lance (você oferta um percentual da carta de crédito para antecipar). Não é possível garantir em qual mês você será contemplado por sorteio. Porém, nossa equipe elabora uma estratégia de lance personalizada para maximizar suas chances de contemplação antecipada com o menor desembolso possível.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          O que é lance e como funciona?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          O lance é uma oferta que você faz para antecipar sua contemplação. Você oferece um percentual do valor da carta de crédito — quem oferecer o maior percentual é contemplado. Existem diferentes tipos de lance (livre, fixo, embutido) e nossa equipe ajuda você a escolher a estratégia certa para o seu perfil financeiro, maximizando suas chances com o menor desembolso.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Preciso pagar entrada para entrar em um consórcio?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          Não. No consórcio não há entrada obrigatória. Você começa a pagar a partir da primeira parcela mensal, sem necessidade de desembolso inicial. Isso é uma das grandes vantagens em relação ao financiamento, que geralmente exige entre 20% e 30% de entrada do valor do bem.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          O que acontece se eu não puder pagar uma parcela?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          Caso ocorra atraso no pagamento, você continua participando do grupo, mas fica temporariamente impedido de receber a contemplação até regularizar a situação. Recomendamos sempre manter as parcelas em dia. Se houver dificuldade pontual, nossa equipe pode te orientar sobre as opções disponíveis junto à administradora, como negociação de prazo ou ajuste do plano.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VÍDEO -->
-<section id="video">
+<section id="video" class="section-alt">
   <div class="section-inner">
     <div class="section-header center">
       <div class="eyebrow">Entenda melhor</div>
@@ -1517,16 +1882,18 @@
     <h2>Pronto para começar sua conquista?</h2>
     <p class="cta-lead">Simulação gratuita, sem compromisso. Nossa equipe monta o plano ideal para o seu objetivo em até 5 minutos.</p>
     <div class="cta-btns">
-      <a href="mailto:contato@crportoconsorcios.com.br" class="btn-primary">Enviar e-mail</a>
+      <a href="https://wa.me/5512991023303?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20cons%C3%B3rcio." class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="mailto:contato@crportoconsorcios.com.br" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Enviar e-mail
+      </a>
     </div>
     <div class="contact-row">
-      <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-</svg> <strong>+55 12 99102-3302</strong></div>
-      <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-</svg> <strong>contato@crportoconsorcios.com.br</strong></div>
-      <div class="contact-item">📍 <strong>Brasil</strong> — Atendimento nacional</div>
+      <div class="contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.22 2.38 2 2 0 012.2.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> <a href="tel:+5512991023303">+55 12 99102-3303</a></div>
+      <div class="contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:contato@crportoconsorcios.com.br">contato@crportoconsorcios.com.br</a></div>
+      <div class="contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> <strong style="color:var(--navy)">Brasil</strong> — Atendimento nacional</div>
     </div>
   </div>
 </section>
@@ -1545,7 +1912,30 @@
           <div class="f-logo-tag">Estratégia para grandes aquisições</div>
         </div>
       </div>
-      <p>Rua Dr. Pompilio Mercadante 398, salas 1701 e 1703 <br>Atendimento em todo o Brasil</p>
+      <p>Rua Dr. Pompilio Mercadante, 398<br>Salas 1701 e 1703 · Jacareí/SP<br>CEP 12308-510<br>CNPJ: <strong style="color:var(--fg)">41.285.485/0001-94</strong></p>
+      <div class="footer-seals">
+        <div class="seal-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="#071E70" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="#189ab4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="seal-badge-text">Banco Central</div>
+            <div class="seal-badge-sub">do Brasil</div>
+          </div>
+        </div>
+        <div class="seal-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="#071E70" stroke-width="1.8"/>
+            <path d="M3 10h18" stroke="#071E70" stroke-width="1.8"/>
+            <path d="M8 5V3M16 5V3" stroke="#189ab4" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="seal-badge-text">ABAC</div>
+            <div class="seal-badge-sub">Associado</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer-col">
       <h5>Modalidades</h5>
@@ -1558,34 +1948,82 @@
     <div class="footer-col">
       <h5>Atendimento</h5>
       <ul>
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-</svg>   +55 12 99102-3302</li>
-
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-</svg>   contato@crportoconsorcios.com.br</li>
-
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-</svg>   Seg–Sab · 8h às 20h</li>
-        <li>📍Todo o Brasil</li>
+        <li><a href="tel:+5512991023303">+55 12 99102-3303</a></li>
+        <li><a href="mailto:contato@crportoconsorcios.com.br">contato@crportoconsorcios.com.br</a></li>
+        <li>Seg–Sex · 9h às 18h</li>
+        <li>Todo o Brasil</li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Sobre</h5>
+      <h5>Legal</h5>
       <ul>
-        <li>CR Porto Consórcio</li>
+        <li><button type="button" id="open-modal-footer" style="background:none;border:none;cursor:pointer;padding:0;font-size:.79rem;color:var(--fg-muted);font-family:inherit;text-align:left;">Política de Privacidade</button></li>
         <li>Regulado pelo Banco Central</li>
-        <li>Simulação gratuita</li>
+        <li>Simulação gratuita e sem compromisso</li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 CR Porto Consórcio e Investimentos. Todos os direitos reservados.</span>
-    <span>Brasil</span>
+    <span>Operações reguladas pelo Banco Central do Brasil</span>
   </div>
 </footer>
+
+<!-- MODAL POLÍTICA DE PRIVACIDADE -->
+<div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" id="close-modal" aria-label="Fechar">✕</button>
+    <h3 id="modal-title">Política de Privacidade</h3>
+    <p>Última atualização: outubro de 2026</p>
+
+    <h4>1. Quem somos</h4>
+    <p>CR Porto Consórcio e Investimentos, inscrita no CNPJ sob o nº <strong>41.285.485/0001-94</strong>, com sede na Rua Dr. Pompilio Mercadante, 398, salas 1701 e 1703, Jacareí/SP, CEP 12308-510, é responsável pelo tratamento dos dados pessoais coletados neste site.</p>
+
+    <h4>2. Dados coletados</h4>
+    <p>Coletamos os seguintes dados por meio do formulário de simulação:</p>
+    <ul>
+      <li>Nome completo</li>
+      <li>Endereço de e-mail</li>
+      <li>Número de celular</li>
+      <li>Modalidade de interesse e faixa de crédito desejada</li>
+    </ul>
+
+    <h4>3. Finalidade do tratamento</h4>
+    <p>Os dados são utilizados exclusivamente para:</p>
+    <ul>
+      <li>Entrar em contato para apresentar simulações de consórcio personalizadas;</li>
+      <li>Acompanhar o atendimento comercial e as etapas de qualificação;</li>
+      <li>Cumprir obrigações legais e regulatórias aplicáveis ao setor de consórcios.</li>
+    </ul>
+
+    <h4>4. Base legal (LGPD)</h4>
+    <p>O tratamento é realizado com base no legítimo interesse do titular (art. 7º, IX da Lei 13.709/2018) e, quando necessário, mediante consentimento. A coleta do e-mail é opcional e não condiciona o atendimento.</p>
+
+    <h4>5. Compartilhamento de dados</h4>
+    <p>Seus dados podem ser compartilhados com a administradora de consórcio autorizada pelo Banco Central que for indicada para seu perfil, e com a plataforma de CRM utilizada para gestão do atendimento (GoHighLevel). Não vendemos dados pessoais a terceiros.</p>
+
+    <h4>6. Retenção</h4>
+    <p>Os dados são mantidos pelo período necessário para a prestação do serviço ou enquanto houver obrigação legal de guarda, respeitando os prazos do Código de Defesa do Consumidor e da legislação fiscal.</p>
+
+    <h4>7. Seus direitos</h4>
+    <p>Nos termos da LGPD, você pode solicitar: confirmação de tratamento, acesso, correção, anonimização, portabilidade, eliminação e revogação do consentimento. Para exercer seus direitos, entre em contato pelo e-mail <strong>contato@crportoconsorcios.com.br</strong>.</p>
+
+    <h4>8. Contato</h4>
+    <p>Dúvidas sobre esta política: <strong>contato@crportoconsorcios.com.br</strong> · +55 12 99102-3303.</p>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a
+  href="https://wa.me/5512991023303?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20fazer%20uma%20simula%C3%A7%C3%A3o%20de%20cons%C3%B3rcio."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar no WhatsApp"
+  title="Falar no WhatsApp"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
   // Menu hambúrguer mobile
@@ -1593,7 +2031,7 @@
   const navLinks = document.querySelector('.nav-links');
   menuBtn.addEventListener('click', () => {
     const open = navLinks.classList.toggle('nav-open');
-    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
   });
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => navLinks.classList.remove('nav-open'));
@@ -1610,8 +2048,44 @@
     });
   });
 
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      // fecha todos
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // abre o clicado se estava fechado
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+
+  // Modal de privacidade
+  const modal = document.getElementById('privacy-modal');
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('close-modal').focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('open-modal-form').addEventListener('click', openModal);
+  document.getElementById('open-modal-footer').addEventListener('click', openModal);
+  document.getElementById('close-modal').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
   // Form submit — webhook
-  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/myoJTRGuh7aTv0DJCxGf/webhook-trigger/610a8f62-6f8d-4265-b34e-65ee01ef296b';
+  // ATENÇÃO: destino do lead ainda NÃO definido. Preencher WEBHOOK_URL com o hook
+  // da subconta correta no GoHighLevel antes de depender da captura de leads.
+  const WEBHOOK_URL = '';
 
   document.getElementById('form-btn').addEventListener('click', async () => {
     const nome  = document.getElementById('f-nome').value.trim();
@@ -1620,10 +2094,21 @@
     const tipo  = document.getElementById('f-tipo').value;
     const valor = document.getElementById('f-valor').value;
 
-    document.getElementById('f-nome').style.borderColor  = nome  ? '' : '#DC2626';
-    document.getElementById('f-tel').style.borderColor   = tel   ? '' : '#DC2626';
-    document.getElementById('f-tipo').style.borderColor  = tipo  ? '' : '#DC2626';
-    if (!nome || !tel || !tipo) return;
+    let valid = true;
+
+    function setError(id, errId, show) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(errId);
+      el.setAttribute('aria-invalid', show ? 'true' : 'false');
+      err.style.display = show ? 'block' : 'none';
+      if (show) valid = false;
+    }
+
+    setError('f-nome', 'err-nome', !nome);
+    setError('f-tel',  'err-tel',  !tel);
+    setError('f-tipo', 'err-tipo', !tipo);
+
+    if (!valid) return;
 
     const btn = document.getElementById('form-btn');
     btn.disabled = true;
@@ -1632,12 +2117,14 @@
     const payload = { nome, email, telefone: tel, modalidade: tipo, credito_desejado: valor, origem: 'site_cr_porto' };
 
     try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (_) { /* envia estado de sucesso mesmo se o webhook falhar */ }
+      if (WEBHOOK_URL) {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+    } catch (_) { /* mostra sucesso mesmo se webhook falhar */ }
 
     document.getElementById('form-body').hidden = true;
     document.getElementById('form-success').hidden = false;
